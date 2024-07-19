@@ -20,9 +20,9 @@ class database
 
 class query extends database
 {
-    public function getData()
+    public function getData($table)
     {
-        $sql = 'select * from users';
+        $sql = 'select * from '.$table;
         $result = $this->connect()->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -33,4 +33,4 @@ class query extends database
 }
 
 $obj = new query();
-$obj->getData();
+$obj->getData('employee');
